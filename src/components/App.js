@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-//new udemy sass-lesson
+//new testing rebase with master
 class App extends Component{
     render(){
         return(<div>
