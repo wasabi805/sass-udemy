@@ -1,9 +1,15 @@
 //----- Variables -----
-@import './variables/_variables.scss';
+@import 'partials/variables/_variables.scss';
 
-//----- Mixin Partial  ------
+//----- Mixin Partials  ------
 
-@import 'mixins/mixin-lessons';
+@import 'partials/mixins/mixin-lessons';
+
+//----- Mixin for Google fonts API  -----
+
+@include google-font("Alegreya+Sans");
+@include google-font("Titillium+Web");
+
 
 //----- USING A MIXIN AT THE ROOT LEVEL
 
@@ -18,8 +24,8 @@
 
 //----- Types of imports : A side note -----
 
-@import "http://";
-@import url('') // useful for things like bg imgs
+//@import "http://";
+//@import url(''); // useful for things like bg imgs OR API's for things like fonts
 //@import "style-screen" screen; could use for media queries
 
 
@@ -28,10 +34,15 @@
 //----- DOM STUFF -----
 
 
-body  {
+body{
   font-family: $text-font;
   color: $text-color;
   background-color: #eee;
+
+  //nested media query : increase font size screen<960px
+  @media only screen and(max-width:960px) {
+    font-size: 150%;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -89,6 +100,12 @@ a {
 //----- Main  -----
 #main {
   width: $content-width;
+  //NESTED Media Query
+  @media only screen and(max-width: 960px) {
+    width: auto;
+    max-width: $content-width;
+  }
+  
   margin-left: auto;
   margin-right: auto;
 

@@ -1,13 +1,19 @@
+
+@mixin google-font($font){
+  $font: unquote($font);
+  @import url(https://fonts.googleapis.com/css?familly=#{$font});
+}
+//uses method() unquote so it can get passed into url()
+//also uses interpolation -->Note: interpolation  can't import scss file based on giving it a var name
+
 @mixin warning{
   background-color: orange;
   color: #fff;
 }
 
 //----- VAR ARGS
-//this represents what ONE shadow should do.
-//passing in the three dots means that every time you pass in
-//multiple values into @include box-shadow in main.scss ln 51, there will be
-//however many args are passed in to make shadows containing props of the args from ln 51
+//this mixin produces instances of shadow: can take
+// multiple vars , args are the props.
 
 @mixin box-shadow($shadows...){
   box-shadow: $shadows;
@@ -17,7 +23,7 @@
 
 
 //----- APPLY MIXINS TO ONLY IE6 : utilze --> * html
-//this is ore of a work-around --> ie 6 is the only browser that will take a wildcard for html
+//this a work-around --> ie 6 is the only browser that will take a wildcard for html
 @mixin apply-to-ie-6{
   * html{
     @content;
