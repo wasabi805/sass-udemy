@@ -16,6 +16,15 @@
   }
 }
 
+//----- Types of imports : A side note -----
+
+@import "http://";
+@import url('') // useful for things like bg imgs
+//@import "style-screen" screen; could use for media queries
+
+
+
+
 //----- DOM STUFF -----
 
 
