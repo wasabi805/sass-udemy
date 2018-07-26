@@ -1,0 +1,13 @@
+//My Functions
+
+@function sum($left, $right){
+
+  @return $left + $right
+}
+
+@function em($pixels, $context: 16px){
+  @return ($pixels / $context) * 1em;
+}
+//em is a percentage
+//need the context<default font size>
+
