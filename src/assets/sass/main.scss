@@ -27,13 +27,25 @@
   }
 }
 
-//----- Types of imports : A side note -----
-
-//@import "http://";
-//@import url(''); // useful for things like bg imgs OR API's for things like fonts
-//@import "style-screen" screen; could use for media queries
-
 //----- DOM STUFF -----
+
+
+//----- inheritance -----
+
+.error{
+  color: red;
+}
+
+.critical-error{
+  @extend .error; //extend allows inheritance
+  border: 1px solid red;
+  font-weight: bold;
+}
+//now, whenever .error is used , IT WILL ALSO APPLY .critical to that class
+//look for this in main.css to see example
+
+//----- ----- ----- -----
+
 
 
 body{
