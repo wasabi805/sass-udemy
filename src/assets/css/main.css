@@ -14,7 +14,7 @@ a {
   border: 1px solid red;
   font-weight: bold; }
 
-.cta-button {
+.cta-button, .super-cta-button {
   border-radius: 6px; }
 
 body {
@@ -42,11 +42,11 @@ a {
   a:hover {
     color: #ca510d; }
 
-.warning-button, .cta-button {
+.warning-button, .cta-button, .super-cta-button {
   background-color: orange;
   color: #fff;
   padding: 8px 12px; }
-  .warning-button:hover, .cta-button:hover {
+  .warning-button:hover, .cta-button:hover, .super-cta-button:hover {
     background-color: #ffc04d; }
 
 #header {

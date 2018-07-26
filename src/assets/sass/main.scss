@@ -48,8 +48,12 @@
   @extend .warning-button;
   //@extend a:hover; can also extend single el sass markup
   //@extend .headline.large --> CANNOT HAVE .headline .large
-
   @include rounded();
+}
+
+.super-cta-button{
+  @extend .cta-button
+  //this is chained
 }
 
 
