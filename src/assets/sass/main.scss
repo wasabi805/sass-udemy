@@ -32,9 +32,6 @@
 //@import url(''); // useful for things like bg imgs OR API's for things like fonts
 //@import "style-screen" screen; could use for media queries
 
-
-
-
 //----- DOM STUFF -----
 
 
@@ -62,7 +59,7 @@ h1, h2, h3, h4 {
 
 h2{
   @include large-text;
-  //this mix-makes the h2 smaller than default
+  //this mixin-makes the h2 smaller than default
 }
 
 p {
@@ -72,6 +69,12 @@ p {
 
 a {
   color: $link-color;
+  //Example of function
+  &:hover{
+    color: darken($link-color, 15%);
+    //1st arg--> color to modify
+    //2nd arg--> % to darken by
+  }
 
 }
 
@@ -97,7 +100,18 @@ a {
     }
 
     a{
+
+      //added function to under-line links on hover
       color: $menu-item-color;
+      padding: 6px 8px;
+      border-bottom: 1px solid transparentize(#fefefe, 1); //sets default -->border is invisible, second arg is as %
+      transition: border-bottom 0.5s;
+      transition-timing-function: ease-in-out;
+
+      &:hover{
+        border-bottom: 1px solid opacify(#fefefe, .5);
+      }
+      //----- ----- ----- ----- ----- ----- ----- ----- -----
     }
 
   }
@@ -110,15 +124,12 @@ a {
 //----- Main  -----
 #main {
   width: $content-width;
-  //NESTED Media Query
-
 
   @include large-screens{
     width: auto;
     max-width: $content-width;
-  }//replaced media query here as well
+  }
 
-  
   margin-left: auto;
   margin-right: auto;
 
