@@ -14,7 +14,7 @@ class Index extends Component{
                             <li><a href="contact.html">Get in Touch</a></li>
                         </ul>
                     </nav>
-                    <img id="logo" src="img/me.png" alt="This is me."/>
+                    {/*<img id="logo" src="img/me.png" alt="This is me."/>*/}
                 </header>
 
                 <div id="main" role="main">
