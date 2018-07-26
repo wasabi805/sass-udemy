@@ -3,6 +3,19 @@
   color: #fff;
 }
 
+//----- VAR ARGS
+//this represents what ONE shadow should do.
+//passing in the three dots means that every time you pass in
+//multiple values into @include box-shadow in main.scss ln 51, there will be
+//however many args are passed in to make shadows containing props of the args from ln 51
+
+@mixin box-shadow($shadows...){
+  box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+}
+
+
 @mixin large-text{
   font:{
     size: 22px;
