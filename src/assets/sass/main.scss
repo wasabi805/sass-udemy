@@ -1,19 +1,58 @@
+//----- Variables -----
+@import 'partials/variables/_variables.scss';
 
-//----- Imports -----
-@import './variables/_variables.scss';
+//----- Mixin Partials  ------
 
-//----- DOM STUFF
+@import 'partials/mixins/mixin-lessons';
+
+//----- Mixin for Google fonts API  -----
+
+@include google-font("Alegreya+Sans");
+@include google-font("Titillium+Web");
 
 
-body  {
+//----- USING A MIXIN AT THE ROOT LEVEL
+
+@include fancy-links  //<------this now touches every link on our site
+
+//----- Makes fonts  ONLY in ie6 larger
+@include apply-to-ie-6{
+  body{
+    font-size: 125%;
+  }
+}
+
+//----- Types of imports : A side note -----
+
+//@import "http://";
+//@import url(''); // useful for things like bg imgs OR API's for things like fonts
+//@import "style-screen" screen; could use for media queries
+
+
+
+
+//----- DOM STUFF -----
+
+
+body{
   font-family: $text-font;
   color: $text-color;
   background-color: #eee;
+
+  //nested media query : increase font size screen<960px
+  @media only screen and(max-width:960px) {
+    font-size: 150%;
+  }
 }
 
 h1, h2, h3, h4 {
   font-family: $headline-font;
 
+}
+
+h2{
+  @include large-text;
+  //this mix-makes the h2 smaller than default
 }
 
 p {
@@ -28,7 +67,16 @@ a {
 
 //----- Header  -----
 
+.warning-button{
+  @include warning;
+  padding: 8px 12px;
+  //padding==> 8 for btm, 12 for left&right
+}
+
 #header {
+  @include box($border: 1px solid #fff, $radius: 12px);
+  @include box-shadow(2px 0px 4px #999, 1px 1px 6px $secondary-color);
+  //this has two shadows getting passed in...
   height: $header-height;
   background-color: $theme-color;
 
@@ -49,10 +97,15 @@ a {
   }
 }
 
-
 //----- Main  -----
 #main {
   width: $content-width;
+  //NESTED Media Query
+  @media only screen and(max-width: 960px) {
+    width: auto;
+    max-width: $content-width;
+  }
+  
   margin-left: auto;
   margin-right: auto;
 

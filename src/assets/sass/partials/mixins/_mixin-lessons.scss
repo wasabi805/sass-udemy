@@ -1,0 +1,54 @@
+
+@mixin google-font($font){
+  $font: unquote($font);
+  @import url(https://fonts.googleapis.com/css?familly=#{$font});
+}
+//uses method() unquote so it can get passed into url()
+//also uses interpolation -->Note: interpolation  can't import scss file based on giving it a var name
+
+@mixin warning{
+  background-color: orange;
+  color: #fff;
+}
+
+//----- VAR ARGS
+//this mixin produces instances of shadow: can take
+// multiple vars , args are the props.
+
+@mixin box-shadow($shadows...){
+  box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+}
+
+
+//----- APPLY MIXINS TO ONLY IE6 : utilze --> * html
+//this a work-around --> ie 6 is the only browser that will take a wildcard for html
+@mixin apply-to-ie-6{
+  * html{
+    @content;
+  }
+}
+
+@mixin large-text{
+  font:{
+    size: 22px;
+    weight: bold;
+  }
+}
+
+@mixin rounded($radius: 6px){
+  border-radius: $radius;
+}
+
+@mixin box($radius: 6px, $border: 1px solid #000){
+  @include rounded($radius);
+  border: $border;
+}
+
+@mixin fancy-links{
+  a{
+    font-style: italic;
+    text-decoration: none;
+  }
+}
