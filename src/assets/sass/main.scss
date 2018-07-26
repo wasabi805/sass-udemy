@@ -8,7 +8,7 @@
 //----- Mixin Partials  ------
 
 @import 'partials/mixins/mixin-lessons';
-@import "functions/_functions.scss";
+@import "partials/functions/_functions.scss";
 
 //----- Mixin for Google fonts API  -----
 
@@ -54,6 +54,9 @@ body{
   @include large-screens{
     font-size: 125%;
   };
+
+  @debug ('Log col-width() from funcs: ', col-width());
+  @debug ('Log $col from vars: ', $col);
 }
 
 h1, h2, h3, h4 {
@@ -139,15 +142,32 @@ a {
 
 
   #content {
+    float: left;
+    width: 6*$col;
   }
 
   #sidebar {
+    float: right;
+    width: 2*$col;
+
+    li{
+      list-style-type: none;
+      text-decoration: none;
+      padding: em(16px) em(20px);
+      border-bottom: 1px dashed #999;
+
+      &:hover{
+        background-color: #efefef;
+      }
+    }
   }
 }
 
 //--- Footer ----
 
 #footer {
+  //clear dropped the footer to the both--> read up on how in the docs later
+  clear: both;
   height: $footer-height;
   background-color: $ternary-color;
 
