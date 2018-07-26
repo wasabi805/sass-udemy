@@ -41,9 +41,12 @@
 body{
   font-family: $text-font;
   color: $text-color;
-  background-color: #eee;
+  //function examples
 
-  //nested media query : increase font size screen<960px
+  color: rgb(10,15,50); // --> text is now navy-blue
+  background-color: hsl(60, 50%, 100%); // --> bg color is off-white
+  //hue<as int>, saturation<as %>, lightness<as %>
+
   @include tiny-screens;
   @include small-screens;
   @include medium-screens;
