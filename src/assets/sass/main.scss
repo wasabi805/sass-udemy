@@ -1,25 +1,13 @@
-//----- Imports -----
+//----- Variables -----
 @import './variables/_variables.scss';
 
-
-//----- Imported Mixins  ------
+//----- Mixin Partial  ------
 
 @import 'mixins/mixin-lessons';
 
-
 //----- USING A MIXIN AT THE ROOT LEVEL
-@mixin fancy-links{
-  a{
-    font-style: italic;
-    text-decoration: none;
-  }
-}
 
 @include fancy-links  //<------this now touches every link on our site
-
-//----- ----- -----
-
-
 
 //----- DOM STUFF -----
 

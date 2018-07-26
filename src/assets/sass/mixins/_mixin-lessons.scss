@@ -10,11 +10,18 @@
   }
 }
 
-@mixin rounded{
-  border-radius: 6px;
+@mixin rounded($radius){
+  border-radius: $radius;
 }
 
 @mixin box{
-  @include rounded;
+  @include rounded(8px);
   border: 1px solid #333;
+}
+
+@mixin fancy-links{
+  a{
+    font-style: italic;
+    text-decoration: none;
+  }
 }
