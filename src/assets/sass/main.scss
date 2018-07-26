@@ -18,7 +18,7 @@
 
 //----- USING A MIXIN AT THE ROOT LEVEL
 
-@include fancy-links  //<------this now touches every link on our site
+@include fancy-links()  //<------this now touches every link on our site
 
 //----- Makes fonts  ONLY in ie6 larger
 @include apply-to-ie-6{
@@ -43,6 +43,16 @@
 }
 //now, whenever .error is used , IT WILL ALSO APPLY .critical to that class
 //look for this in main.css to see example
+
+.cta-button{
+  @extend .warning-button;
+  //@extend a:hover; can also extend single el sass markup
+  //@extend .headline.large --> CANNOT HAVE .headline .large
+
+  @include rounded();
+}
+
+
 
 //----- ----- ----- -----
 
