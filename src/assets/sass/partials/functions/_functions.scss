@@ -18,3 +18,13 @@
 }
 //remember: these args are passed in w/ default vals:
 
+
+//----- Strip Unit func -----
+//descrip: removes px, em, % etc..
+
+@function strip-unit($value){
+  @return $value / ($value*0+1)
+}
+//try to avoid using this func: if you have to use this, you're
+//math is wrong somewhere
+
