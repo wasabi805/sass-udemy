@@ -9,6 +9,13 @@
 
 @include fancy-links  //<------this now touches every link on our site
 
+//----- Makes fonts  ONLY in ie6 larger
+@include apply-to-ie-6{
+  body{
+    font-size: 125%;
+  }
+}
+
 //----- DOM STUFF -----
 
 

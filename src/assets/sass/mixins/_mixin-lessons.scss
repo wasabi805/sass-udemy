@@ -16,6 +16,14 @@
 }
 
 
+//----- APPLY MIXINS TO ONLY IE6 : utilze --> * html
+//this is ore of a work-around --> ie 6 is the only browser that will take a wildcard for html
+@mixin apply-to-ie-6{
+  * html{
+    @content;
+  }
+}
+
 @mixin large-text{
   font:{
     size: 22px;
