@@ -6,6 +6,13 @@
   color: #fff;
 }
 
+@mixin large-text{
+  font:{
+    size: 22px;
+    weight: bold;
+  }
+}
+
 
 //----- Imports -----
 @import './variables/_variables.scss';
@@ -22,6 +29,11 @@ body  {
 h1, h2, h3, h4 {
   font-family: $headline-font;
 
+}
+
+h2{
+  @include large-text;
+  //this mix-makes the h2 smaller than default
 }
 
 p {
