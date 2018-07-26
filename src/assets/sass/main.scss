@@ -1,4 +1,12 @@
 
+//----- Mixins  ------
+
+@mixin warning{
+  background-color: orange;
+  color: #fff;
+}
+
+
 //----- Imports -----
 @import './variables/_variables.scss';
 
@@ -27,6 +35,14 @@ a {
 }
 
 //----- Header  -----
+
+.warning-button{
+  @include warning;
+  padding: 8px 12px;
+  //padding==> 8 for btm, 12 for left&right
+}
+
+
 
 #header {
   height: $header-height;
