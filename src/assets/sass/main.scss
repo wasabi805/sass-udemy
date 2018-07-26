@@ -1,26 +1,10 @@
+//----- Imports -----
+@import './variables/_variables.scss';
 
-//----- Mixins  ------
 
-@mixin warning{
-  background-color: orange;
-  color: #fff;
-}
+//----- Imported Mixins  ------
 
-@mixin large-text{
-  font:{
-    size: 22px;
-    weight: bold;
-  }
-}
-
-@mixin rounded{
-  border-radius: 6px;
-}
-
-@mixin box{
-  @include rounded;
-  border: 1px solid #333;
-}
+@import 'mixins/mixin-lessons';
 
 
 //----- USING A MIXIN AT THE ROOT LEVEL
@@ -36,10 +20,6 @@
 //----- ----- -----
 
 
-
-
-//----- Imports -----
-@import './variables/_variables.scss';
 
 //----- DOM STUFF -----
 
@@ -78,8 +58,6 @@ a {
   //padding==> 8 for btm, 12 for left&right
 }
 
-
-
 #header {
   @include box;
   height: $header-height;
@@ -101,7 +79,6 @@ a {
 
   }
 }
-
 
 //----- Main  -----
 #main {
