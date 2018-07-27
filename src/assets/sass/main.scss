@@ -99,7 +99,11 @@ p {
 
 a {
   color: $link-color;
-  //Example of function
+
+  @include blue-beans{
+    color: #8779ff;
+  }
+
   &:hover{
     color: darken($link-color, 15%);
     //1st arg--> color to modify
@@ -208,5 +212,9 @@ a {
   clear: both;
   height: $footer-height;
   background-color: $ternary-color;
+
+  @include rogers-rovers{
+    border-top: 5px solid darken($ternary-color, 15%);
+  }
 
 }
