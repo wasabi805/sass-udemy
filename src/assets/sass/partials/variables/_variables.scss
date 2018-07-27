@@ -1,16 +1,45 @@
 @import ".././functions/functions";
 //need to import to gain access to col-width() used below
 
-//----- Variables -----
+
+//=== THEMES  === /allowed values: Dark, Light, default
+//Another conditional example
+$theme: default;
 
 //  colors
 
+//default
 $text-color : #222222;
+$body-background-color: #fff;
 $theme-color: #170a48;
 $secondary-color: #f27731;
 $ternary-color: #ccf962;
 $link-color: $secondary-color;
 $menu-item-color: white;
+
+//Dark
+@if $theme == Dark{
+  $text-color : #fff;
+  $body-background-color: #22222a;
+  $theme-color: #42424a;
+  $secondary-color: #c24721;
+  $ternary-color: #698932;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+
+  //Light
+}@else if $theme == Light{
+  //override these colors differently
+  $text-color : #000;
+  $body-background-color: #fff;
+  $theme-color: #372a27;
+  $secondary-color: #d26741;
+  $ternary-color: #b9da63;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+}
+
+//DON NOT ADD AN ELSE: Sass won't know it
 
 
 //  fonts

@@ -24,7 +24,8 @@ body {
   font-family: "Alegreya Sans", Arial, sans-serif;
   font-size: 1.125em;
   color: #222222;
-  color: #000; }
+  background-color: #fff;
+  color: #222222; }
   @media only screen and (max-width: 960px) {
     body {
       font-size: 125%; } }

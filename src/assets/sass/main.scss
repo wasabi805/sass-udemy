@@ -1,17 +1,6 @@
-
-
-
-
-//----- Variables -----
 @import 'partials/variables/_variables.scss';
-
-//----- Mixin Partials  ------
-
 @import 'partials/mixins/mixin-lessons';
 @import "partials/functions/_functions.scss";
-
-//----- Mixin for Google fonts API  -----
-
 @include google-font("Alegreya+Sans");
 @include google-font("Titillium+Web");
 
@@ -59,16 +48,19 @@
 
 
 
-//----- ----- ----- -----
+//----- BODY -----
 
 
 //----- Conditionals  -----
-$contrast : high;
+$contrast : normal; //options normal, high, low
+
 
 body{
   font-family: $text-font;
   font-size: em(18px);
   color: $text-color;
+
+  background-color: $body-background-color;
   @if $contrast == high{
     color: #000;
   }@else if $contrast == low{
