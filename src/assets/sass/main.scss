@@ -52,8 +52,9 @@
 }
 
 .super-cta-button{
-  @extend .cta-button
+  @extend .cta-button;
   //this is chained
+  font-size: em($pixels: 20px);
 }
 
 
@@ -61,19 +62,23 @@
 //----- ----- ----- -----
 
 
+//----- Conditionals  -----
+$contrast : high;
 
 body{
   font-family: $text-font;
-  color: $text-color;
-
   font-size: em(18px);
+  color: $text-color;
+  @if $contrast == high{
+    color: #000;
+  }@else if $contrast == low{
+    color: #999;
+  }@else{
+    //if $contrast !== high || low...
+    color: $text-color;
+  }
 
-
-  //function examples
-  color: rgb(10,15,50); // --> text is now navy-blue
-  background-color: hsl(60, 50%, 100%); // --> bg color is off-white
-  //hue<as int>, saturation<as %>, lightness<as %>
-
+  //----- ----- ----- -----
   @include tiny-screens;
   @include small-screens;
   @include medium-screens;
@@ -110,6 +115,21 @@ a {
   }
 
 }
+
+
+//----- Extend ONLY SELECTOR  -----
+// % sign is like # or . but, tells processor to omit generating any css code from inside here
+//ex.)
+%highlight{
+  font-style: italic;
+}
+
+.sub-title{
+  @extend %highlight;
+  @extend .foo !optional; //adds optional: if class doesn't exist, pass and don't crash: could be used for conditionals
+  font-size: 20px;
+}
+
 
 //----- Header  -----
 

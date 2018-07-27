@@ -17,12 +17,14 @@ a {
 .cta-button, .super-cta-button {
   border-radius: 6px; }
 
+.super-cta-button {
+  font-size: 1.25em; }
+
 body {
   font-family: "Alegreya Sans", Arial, sans-serif;
-  color: #222222;
   font-size: 1.125em;
-  color: #0a0f32;
-  background-color: white; }
+  color: #222222;
+  color: #000; }
   @media only screen and (max-width: 960px) {
     body {
       font-size: 125%; } }
@@ -41,6 +43,12 @@ a {
   color: #f27731; }
   a:hover {
     color: #ca510d; }
+
+.sub-title {
+  font-style: italic; }
+
+.sub-title {
+  font-size: 20px; }
 
 .warning-button, .cta-button, .super-cta-button {
   background-color: orange;
