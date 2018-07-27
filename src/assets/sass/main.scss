@@ -1,19 +1,13 @@
-//----- Variables -----
 @import 'partials/variables/_variables.scss';
-
-//----- Mixin Partials  ------
-
 @import 'partials/mixins/mixin-lessons';
-
-//----- Mixin for Google fonts API  -----
-
+@import "partials/functions/_functions.scss";
 @include google-font("Alegreya+Sans");
 @include google-font("Titillium+Web");
 
 
 //----- USING A MIXIN AT THE ROOT LEVEL
 
-@include fancy-links  //<------this now touches every link on our site
+@include fancy-links()  //<------this now touches every link on our site
 
 //----- Makes fonts  ONLY in ie6 larger
 @include apply-to-ie-6{
@@ -22,30 +16,70 @@
   }
 }
 
-//----- Types of imports : A side note -----
-
-//@import "http://";
-//@import url(''); // useful for things like bg imgs OR API's for things like fonts
-//@import "style-screen" screen; could use for media queries
-
-
-
-
 //----- DOM STUFF -----
+
+
+//----- inheritance -----
+
+.error{
+  color: red;
+}
+
+.critical-error{
+  @extend .error; //extend allows inheritance
+  border: 1px solid red;
+  font-weight: bold;
+}
+//now, whenever .error is used , IT WILL ALSO APPLY .critical to that class
+//look for this in main.css to see example
+
+.cta-button{
+  @extend .warning-button;
+  //@extend a:hover; can also extend single el sass markup
+  //@extend .headline.large --> CANNOT HAVE .headline .large
+  @include rounded();
+}
+
+.super-cta-button{
+  @extend .cta-button;
+  //this is chained
+  font-size: em($pixels: 20px);
+}
+
+
+
+//----- BODY -----
+
+
+//----- Conditionals  -----
+$contrast : normal; //options normal, high, low
 
 
 body{
   font-family: $text-font;
+  font-size: em(18px);
   color: $text-color;
-  background-color: #eee;
 
-  //nested media query : increase font size screen<960px
+  background-color: $body-background-color;
+  @if $contrast == high{
+    color: #000;
+  }@else if $contrast == low{
+    color: #999;
+  }@else{
+    //if $contrast !== high || low...
+    color: $text-color;
+  }
+
+  //----- ----- ----- -----
   @include tiny-screens;
   @include small-screens;
   @include medium-screens;
   @include large-screens{
     font-size: 125%;
   };
+
+  @debug ('Log col-width() from funcs: ', col-width());
+  @debug ('Log $col from vars: ', $col);
 }
 
 h1, h2, h3, h4 {
@@ -55,7 +89,7 @@ h1, h2, h3, h4 {
 
 h2{
   @include large-text;
-  //this mix-makes the h2 smaller than default
+  //this mixin-makes the h2 smaller than default
 }
 
 p {
@@ -66,7 +100,32 @@ p {
 a {
   color: $link-color;
 
+  @include blue-beans{
+    color: #8779ff;
+  }
+
+  &:hover{
+    color: darken($link-color, 15%);
+    //1st arg--> color to modify
+    //2nd arg--> % to darken by
+  }
+
 }
+
+
+//----- Extend ONLY SELECTOR  -----
+// % sign is like # or . but, tells processor to omit generating any css code from inside here
+//ex.)
+%highlight{
+  font-style: italic;
+}
+
+.sub-title{
+  @extend %highlight;
+  @extend .foo !optional; //adds optional: if class doesn't exist, pass and don't crash: could be used for conditionals
+  font-size: 20px;
+}
+
 
 //----- Header  -----
 
@@ -90,7 +149,18 @@ a {
     }
 
     a{
+
+      //added function to under-line links on hover
       color: $menu-item-color;
+      padding: 6px 8px;
+      border-bottom: 1px solid transparentize(#fefefe, 1); //sets default -->border is invisible, second arg is as %
+      transition: border-bottom 0.5s;
+      transition-timing-function: ease-in-out;
+
+      &:hover{
+        border-bottom: 1px solid opacify(#fefefe, .5);
+      }
+      //----- ----- ----- ----- ----- ----- ----- ----- -----
     }
 
   }
@@ -103,30 +173,48 @@ a {
 //----- Main  -----
 #main {
   width: $content-width;
-  //NESTED Media Query
-
 
   @include large-screens{
     width: auto;
     max-width: $content-width;
-  }//replaced media query here as well
+  }
 
-  
   margin-left: auto;
   margin-right: auto;
 
 
   #content {
+    float: left;
+    width: 6*$col;
   }
 
   #sidebar {
+    float: right;
+    width: 2*$col;
+
+    li{
+      list-style-type: none;
+      text-decoration: none;
+      padding: em(16px) em(20px);
+      border-bottom: 1px dashed #999;
+
+      &:hover{
+        background-color: #efefef;
+      }
+    }
   }
 }
 
 //--- Footer ----
 
 #footer {
+  //clear dropped the footer to the both--> read up on how in the docs later
+  clear: both;
   height: $footer-height;
   background-color: $ternary-color;
+
+  @include rogers-rovers{
+    border-top: 5px solid darken($ternary-color, 15%);
+  }
 
 }

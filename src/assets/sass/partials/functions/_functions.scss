@@ -1,0 +1,30 @@
+//My Functions
+
+@function sum($left, $right){
+
+  @return $left + $right
+}
+
+@function em($pixels, $context: 16px){
+  @return ($pixels / $context) * 1em;
+}
+//em is a percentage
+//need the context<default font size>
+
+
+//defines column widths
+@function col-width($columns: 12, $page-width: 100%, $gap:1%){
+  @return ($page-width - $gap*($columns - 1)) /$columns;
+}
+//remember: these args are passed in w/ default vals:
+
+
+//----- Strip Unit func -----
+//descrip: removes px, em, % etc..
+
+@function strip-unit($value){
+  @return $value / ($value*0+1)
+}
+//try to avoid using this func: if you have to use this, you're
+//math is wrong somewhere
+
